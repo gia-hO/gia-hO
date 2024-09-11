@@ -7,7 +7,6 @@
   
   <!-- html5-qrcode ライブラリの読み込み -->
   <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
-
   
   <style>
     body {
@@ -46,12 +45,6 @@
       font-size: 1.2em;
       margin-bottom: 20px;
     }
-    
-    img {
-      width: 90%;
-      max-width: 400px; /* 画像の最大幅を設定 */
-      border-radius: 8px;
-    }
   </style>
 </head>
 <body>
@@ -70,22 +63,29 @@
       document.getElementById('qr-reader-results').innerText = "QRコードの内容: " + qrCodeMessage;
     }
 
-    // QRコードリーダーを初期化
-    var html5QrCode = new Html5Qrcode("qr-reader");
+    // スキャンエラー時に呼ばれる関数
+    function onScanError(errorMessage) {
+      console.log("エラー: " + errorMessage);
+    }
 
-    // QRコードの読み取りを開始
-    html5QrCode.start(
-      { facingMode: "environment" },  // リアカメラを使用
-      {
-        fps: 10,    // 1秒あたりのフレーム数
-        qrbox: { width: 350, height: 350 }  // QRコードのスキャン範囲
-      },
-      onScanSuccess  // 成功時に実行される関数
-    )
-    .catch(err => {
-      // カメラへのアクセスに失敗した場合のエラー処理
-      console.error("QRコードの読み取りに失敗しました: ", err);
-    });
+    // ページがロードされた後にQRコードの読み取りを開始
+    window.onload = function() {
+      var html5QrCode = new Html5Qrcode("qr-reader");
+
+      // QRコードの読み取りを開始
+      html5QrCode.start(
+        { facingMode: "environment" },  // リアカメラを使用
+        {
+          fps: 10,    // 1秒あたりのフレーム数
+          qrbox: { width: 300, height: 300 }  // スキャン範囲を300x300に調整
+        },
+        onScanSuccess,  // 成功時に実行される関数
+        onScanError     // エラー時に実行される関数
+      )
+      .catch(err => {
+        console.error("カメラの起動に失敗しました: ", err);
+      });
+    }
   </script>
 
 </body>
