@@ -41,10 +41,13 @@
             margin: 20px auto 0; /* 上に20pxのスペースを追加してボタンを下げる */
             opacity: 0.4; /* 透明度を40%に設定 */
             cursor: pointer;
-            width: auto; /* 幅は自動で調整 */
-            height: 50px; /* 高さを50pxに固定 */
-            border: none; /* ボーダーなし */
-            background: none; /* 背景なし */
+            background: none; /* ボタンの背景をなくす */
+            border: none; /* ボーダーをなくす */
+        }
+        .submit-btn img {
+            width: 100%; /* 画像の幅を100%に設定（親要素に依存） */
+            max-width: 150px; /* 画像の最大幅を150pxに制限 */
+            height: auto; /* 縦横比を保つ */
         }
         .submit-btn:hover {
             opacity: 0.6; /* ホバー時に透明度を少し高く */
