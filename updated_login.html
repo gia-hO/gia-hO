@@ -24,9 +24,15 @@
         .login-form input[type="text"], .login-form input[type="password"] {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin-bottom: 30px; /* ボタン間の間隔を3倍に */
+            border: none; /* ボーダーをなくす */
+            border-bottom: 2px solid white; /* 下線を追加 */
+            border-radius: 0; /* 角をなくす */
+            background-color: transparent; /* 背景色を透明に */
+            color: white; /* 文字色を白に */
+        }
+        .login-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7); /* プレースホルダーの文字も薄い白に */
         }
         .submit-btn {
             display: block;
@@ -34,7 +40,7 @@
             opacity: 0.4; /* 透明度を40%に設定 */
             cursor: pointer;
             width: auto; /* 幅は自動で調整 */
-            height: 40px; /* 高さを50pxに固定 */
+            height: 50px; /* 高さを50pxに固定 */
         }
         .submit-btn:hover {
             opacity: 0.6; /* ホバー時に透明度を少し高く */
