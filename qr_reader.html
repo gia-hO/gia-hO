@@ -59,4 +59,33 @@
           { facingMode: "environment" },  // リアカメラを使用
           {
             fps: 10,
-            qrbox: { width: 250, height: 250
+            qrbox: { width: 250, height: 250 }
+          },
+          (decodedText, decodedResult) => {
+            // QRコードがスキャンされたときに新しいタブで開く
+            console.log(`Decoded Text: ${decodedText}`);
+            if (decodedText.startsWith("http")) {
+              window.open(decodedText, '_blank');  // 新しいタブでURLを開く
+            }
+          },
+          (errorMessage) => {
+            // エラーメッセージを表示
+            console.error(`スキャンエラー: ${errorMessage}`);
+          }
+        ).catch(err => {
+          // カメラのアクセスに失敗した場合のエラーメッセージ
+          console.error(`カメラエラー: ${err}`);
+        });
+      } else {
+        console.error("html5-qrcodeライブラリの読み込みに失敗しました。");
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- QRコードをスキャンする領域 -->
+  <div id="qr-reader"></div>
+
+</body>
+</html>
