@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOHAKU Membership Email</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6;">
+    <p>Thank you very much for joining the YOHAKU membership.</p>
+    
+    <p>Your registration has been successfully completed. By logging in through the link below, you can connect HOSOO’s digital textile with your Wallet.</p>
+
+    <p><a href="[Login Page URL]" style="color: #1a73e8; text-decoration: none;">Login link</a></p>
+
+    <p>We appreciate your continued support for YOHAKU.</p>
+
+    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;">
+
+    <p>In the future, this community will offer a variety of special experiences, including craft-related programs, exclusive invitations to gallery tours, and early access to new textile collections. Please look forward to more exciting opportunities to come.</p>
+
+    <p>Sincerely,<br>YOHAKU Team</p>
+</body>
+</html>
