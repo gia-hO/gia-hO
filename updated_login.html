@@ -38,7 +38,7 @@
         }
         .submit-btn {
             display: block;
-            margin: 0 auto;
+            margin: 20px auto 0; /* 上に20pxのスペースを追加してボタンを下げる */
             opacity: 0.4; /* 透明度を40%に設定 */
             cursor: pointer;
             width: auto; /* 幅は自動で調整 */
@@ -77,7 +77,7 @@
                 // ログイン成功時に他のページにリダイレクト（例: ダッシュボードページ）
                 window.location.href = "https://gia-ho.jp/qr";
             } else {
-                alert("ユーザー名またはパスワードが間違っています。");
+                alert("Login was failed."); // ログイン失敗時のメッセージ
             }
         });
     </script>
