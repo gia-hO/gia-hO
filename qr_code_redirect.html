@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Reader</title>
+  <title>QR Code Reader (Embedded)</title>
 
   <!-- html5-qrcode ライブラリの読み込み -->
   <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
@@ -26,7 +25,7 @@
             // QRコードがスキャンされたときにリダイレクト
             console.log(`Decoded Text: ${decodedText}`);
             if (decodedText.startsWith("http")) {
-              window.location.href = decodedText;  // URLに自動リダイレクト
+              window.top.location.href = decodedText;  // 親ページ全体にリダイレクト
             }
           },
           (errorMessage) => {
