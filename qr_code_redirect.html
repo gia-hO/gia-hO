@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Reader</title>
+
+  <!-- html5-qrcode ライブラリの読み込み -->
+  <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
+
+  <script>
+    window.onload = function() {
+      if (typeof Html5Qrcode === "function") {
+        console.log("html5-qrcodeライブラリが正しく読み込まれました。");
+
+        // QRコードリーダーを初期化して表示
+        const html5QrCode = new Html5Qrcode("qr-reader");
+        html5QrCode.start(
+          { facingMode: "environment" },  // リアカメラを使用
+          {
+            fps: 10,
+            qrbox: { width: 250, height: 250 }
+          },
+          (decodedText, decodedResult) => {
+            // QRコードがスキャンされたときにリダイレクト
+            console.log(`Decoded Text: ${decodedText}`);
+            if (decodedText.startsWith("http")) {
+              window.location.href = decodedText;  // URLに自動リダイレクト
+            }
+          },
+          (errorMessage) => {
+            // エラーメッセージを表示
+            console.error(`スキャンエラー: ${errorMessage}`);
+          }
+        ).catch(err => {
+          // カメラのアクセスに失敗した場合のエラーメッセージ
+          console.error(`カメラエラー: ${err}`);
+        });
+      } else {
+        console.error("html5-qrcodeライブラリの読み込みに失敗しました。");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>QR Code Reader</h1>
+  <!-- QRコードをスキャンする領域 -->
+  <div id="qr-reader" style="width: 300px; height: 300px;"></div>
+</body>
+</html>
