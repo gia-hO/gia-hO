@@ -62,10 +62,10 @@
             qrbox: { width: 250, height: 250 }
           },
           (decodedText, decodedResult) => {
-            // QRコードがスキャンされたときにリダイレクト
+            // QRコードがスキャンされたときに親ページ全体をリダイレクト
             console.log(`Decoded Text: ${decodedText}`);
             if (decodedText.startsWith("http")) {
-              window.top.location.href = decodedText;  // 親ページ全体にリダイレクト
+              window.top.location.href = decodedText;  // 親ページ全体をリダイレクト
             }
           },
           (errorMessage) => {
