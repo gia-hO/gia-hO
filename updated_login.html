@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: transparent; /* 背景を透明にする */
+            background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,7 +15,7 @@
             margin: 0;
         }
         .login-form {
-            background-color: transparent; /* 完全に透明にする */
+            background-color: transparent;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -24,33 +24,32 @@
         .login-form input[type="text"], .login-form input[type="password"] {
             width: 100%;
             padding: 10px;
-            margin-bottom: 30px; /* ボタン間の間隔を3倍に */
-            border: none; /* ボーダーをなくす */
-            border-bottom: 2px solid white; /* 下線を追加 */
-            border-radius: 0; /* 角をなくす */
-            background-color: transparent; /* 背景色を透明に */
-            color: white; /* 文字色を白に */
-            font-size: 18px; /* 文字サイズを大きく */
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 2px solid white;
+            background-color: transparent;
+            color: white;
+            font-size: 18px;
         }
         .login-form input::placeholder {
-            color: rgba(255, 255, 255, 0.7); /* プレースホルダーの文字も薄い白に */
-            font-size: 18px; /* プレースホルダーの文字サイズを大きく */
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
         }
         .submit-btn {
             display: block;
-            margin: 20px auto 0; /* 上に20pxのスペースを追加してボタンを下げる */
-            opacity: 0.4; /* 透明度を40%に設定 */
+            margin: 20px auto 0;
+            opacity: 0.4;
             cursor: pointer;
-            background: none; /* ボタンの背景をなくす */
-            border: none; /* ボーダーをなくす */
+            background: none;
+            border: none;
         }
         .submit-btn img {
-            width: 100%; /* 画像の幅を100%に設定（親要素に依存） */
-            max-width: 150px; /* 画像の最大幅を150pxに制限 */
-            height: auto; /* 縦横比を保つ */
+            width: 100%;
+            max-width: 150px;
+            height: auto;
         }
         .submit-btn:hover {
-            opacity: 0.6; /* ホバー時に透明度を少し高く */
+            opacity: 0.6;
         }
     </style>
 </head>
@@ -59,7 +58,6 @@
         <form id="loginForm">
             <input type="text" id="username" placeholder="Enter username" required>
             <input type="password" id="password" placeholder="Enter password" required>
-            <!-- ボタンに画像を挿入して送信ボタンをクリック可能にする -->
             <button type="submit" class="submit-btn">
                 <img src="https://gia-ho.github.io/gia-hO/submitbottom.png" alt="ログイン">
             </button>
@@ -68,6 +66,8 @@
 
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // フォーム送信を防ぐ
+
             // ユーザー名とパスワードの取得
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
@@ -79,12 +79,12 @@
             // ユーザー名とパスワードの検証
             if (username === correctUsername && password === correctPassword) {
                 alert("Login succeeded.");
-                // ログイン成功時に他のページにリダイレクト
-                window.location.href = "https://gia-ho.jp/qr";
+                // 正しいタイミングでリダイレクトするために、setTimeoutを使用
+                setTimeout(function() {
+                    window.location.href = "https://gia-ho.jp/qr";
+                }, 1000); // 1秒の遅延を追加してリダイレクト
             } else {
-                // ログイン失敗時の処理
                 alert("Login was failed.");
-                event.preventDefault(); // ログイン失敗時にページをリロードしないようにする
             }
         });
     </script>
