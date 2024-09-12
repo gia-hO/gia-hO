@@ -58,6 +58,7 @@
         <form id="loginForm">
             <input type="text" id="username" placeholder="Enter username" required>
             <input type="password" id="password" placeholder="Enter password" required>
+            <!-- ボタンに画像を挿入して送信ボタンをクリック可能にする -->
             <button type="submit" class="submit-btn">
                 <img src="https://gia-ho.github.io/gia-hO/submitbottom.png" alt="ログイン">
             </button>
@@ -78,12 +79,10 @@
 
             // ユーザー名とパスワードの検証
             if (username === correctUsername && password === correctPassword) {
-                alert("Login succeeded.");
-                // 正しいタイミングでリダイレクトするために、setTimeoutを使用
-                setTimeout(function() {
-                    window.location.href = "https://gia-ho.jp/qr";
-                }, 1000); // 1秒の遅延を追加してリダイレクト
+                // iframe内ではなく全画面にリダイレクト
+                window.top.location.href = "https://gia-ho.jp/qr";
             } else {
+                // ログイン失敗時の処理
                 alert("Login was failed.");
             }
         });
