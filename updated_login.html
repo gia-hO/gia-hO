@@ -43,6 +43,8 @@
             cursor: pointer;
             width: auto; /* 幅は自動で調整 */
             height: 50px; /* 高さを50pxに固定 */
+            border: none; /* ボーダーなし */
+            background: none; /* 背景なし */
         }
         .submit-btn:hover {
             opacity: 0.6; /* ホバー時に透明度を少し高く */
@@ -54,8 +56,10 @@
         <form id="loginForm">
             <input type="text" id="username" placeholder="Enter username" required>
             <input type="password" id="password" placeholder="Enter password" required>
-            <!-- PNG画像を使用した送信ボタン -->
-            <img src="https://gia-ho.github.io/gia-hO/submitbottom.png" class="submit-btn" alt="ログイン" type="submit">
+            <!-- ボタンに画像を挿入して送信ボタンをクリック可能にする -->
+            <button type="submit" class="submit-btn">
+                <img src="https://gia-ho.github.io/gia-hO/submitbottom.png" alt="ログイン">
+            </button>
         </form>
     </div>
 
