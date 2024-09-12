@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>QR Code Reader (Embedded)</title>
+  <title>QR Code Reader (Popup)</title>
 
   <!-- html5-qrcode ライブラリの読み込み -->
   <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
@@ -62,10 +62,10 @@
             qrbox: { width: 250, height: 250 }
           },
           (decodedText, decodedResult) => {
-            // QRコードがスキャンされたときに親ページ全体をリダイレクト
+            // QRコードがスキャンされたときにポップアップでリンクを開く
             console.log(`Decoded Text: ${decodedText}`);
             if (decodedText.startsWith("http")) {
-              window.top.location.href = decodedText;  // 親ページ全体をリダイレクト
+              window.open(decodedText, '_blank');  // 新しいタブまたはウィンドウでリンクを開く
             }
           },
           (errorMessage) => {
